@@ -20,9 +20,11 @@ def ETL_job():
 
     wip_timeseries_trend_df, my_validation = get_timeseries_trends(national_trends)
 
-    fin_timeseries_trend_df = finalize_timeseries_trend_sql_format(wip_timeseries_trend_df)
+    fin_timeseries_trend_df = finalize_timeseries_trend_sql_format(
+        wip_timeseries_trend_df
+    )
 
-    engine = create_engine('sqlite:///app/data/SQLITE_public_database.db', echo=True)
+    engine = create_engine("sqlite:///app/data/SQLITE_public_database.db", echo=True)
 
     insert_cross_section_trends(engine, fin_woeid_trends_df)
 
