@@ -1,4 +1,4 @@
-from app.ETL import *
+from application.ETL import *
 
 from datetime import datetime
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -24,7 +24,7 @@ def ETL_job():
         wip_timeseries_trend_df
     )
 
-    engine = create_engine("sqlite:///app/data/SQLITE_public_database.db", echo=True)
+    engine = create_engine("sqlite:///application/data/SQLITE_public_database.db", echo=True)
 
     insert_cross_section_trends(engine, fin_woeid_trends_df)
 
@@ -36,4 +36,4 @@ def ETL_job():
 if __name__ == "__main__":
     print("main")
     ETL_job()
-#    scheduler.start()
+    scheduler.start()
